@@ -1,0 +1,56 @@
+---
+title: "project"
+author: "Jordan Stump"
+date: "2024-04-22"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+test_df = read_csv("madison2024.csv", col_names = c("date", "location", "temp"))
+test_df$location = gsub(",.*$", "", test_df$location)
+test_df$temp = test_df$temp / 10
+test_df$date <- as.Date(test_df$date)
+test_df <- subset(test_df, temp != 999.9)
+
+train_df = read_csv("madisonTrain.csv", col_names = c("date", "location", "temp"))
+train_df$location = gsub(",.*$", "", train_df$location)
+train_df$temp = train_df$temp / 10
+train_df$date <- as.Date(train_df$date)
+train_df <- subset(train_df, temp != 999.9)
+
+```
+
+
+```{r}
+test_series = test_df %>% group_by(date) %>% summarise(daily_max = max(temp))
+ggplot(test_series, aes(x = date, y = daily_max)) +
+  geom_line() +
+  geom_point() +  # Add points
+  labs(x = "Date", y = "Daily Maximum Temperature") +
+  ggtitle("Daily Maximum Temperature Time Series with Points")
+```
+
+
+```{r}
+train_series = train_df %>% group_by(date) %>% summarise(daily_max = max(temp))
+ggplot(train_series, aes(x = date, y = daily_max)) +
+  geom_line() +
+  geom_point() +  # Add points
+  labs(x = "Date", y = "Daily Maximum Temperature") +
+  ggtitle("Daily Maximum Temperature Time Series with Points")
+```
+
+
+
+
+
+
+
+
+
+
