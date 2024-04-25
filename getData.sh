@@ -18,7 +18,7 @@ wget -q https://www.ncei.noaa.gov/data/global-hourly/archive/csv/${n}.tar.gz -P 
 tar -xzvf "$n/${n}.tar.gz" -C "$n"
 
 for file in "$n"/*.csv; do
-    awk -F ',' '$7 ~ /MADISON DANE CO REGIONAL AIRPORT/ {gsub("\"", "", $2); gsub("\"", "", $7); gsub("\"", "", $25); gsub("\"", "", $21); print $2 "," $7 "," $25 "," $21}' "$file" >> "$output_file"
+    awk -F ',' '$7 ~ /MADISON DANE CO REGIONAL AIRPORT/ {gsub("\"", "", $2); gsub("\"", "", $7); gsub("\"", "", $25); gsub("\"", "", $21); gsub("\"", "", $15); print $2 "," $7 "," $25 "," $21 "," $15}' "$file" >> "$output_file"
 done
 
 
