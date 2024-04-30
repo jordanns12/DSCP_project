@@ -2,12 +2,7 @@
 
 echo "getData begins!!"
 
-if [ "$SLURM_ARRAY_TASK_ID" == "" ]; then
-    echo "Error: SLURM_ARRAY_TASK_ID is not set."
-    exit 1
-fi
-
-n=$SLURM_ARRAY_TASK_ID
+n="$1"
 output_file="madison${n}.csv"
 
 echo "collecting the $n year's data!" >&2
@@ -34,6 +29,5 @@ echo "collected the $n year's Madison data!" >&2
 # Clean up downloaded files
 rm -rf "$n"
 rm -f "$n.tar.gz"
-
 
 
