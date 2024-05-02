@@ -13,7 +13,7 @@ data_2023 <- fread("madison2023.csv")
 data_2024 <- fread("madison2024.csv")
 #Here I process the data 
 library(dplyr)
-as.numeric(data_2024$V14[255 :291])
+#as.numeric(data_2024$V14[255 :291])
 
 for (year in 2019:2024) {
 
