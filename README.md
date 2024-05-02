@@ -1,5 +1,6 @@
 # Weather Project
 
+To clone the repository perform git clone git@github.com:jordanns12/weather_project.git for ssh or git clone https://github.com/jordanns12/weather_project.git for https.
 In this project you can extract the tar file here and run condor_submit submit.sub.
 This will download and filter the necessary data files for Madison for each year.
 The files downloaded will be madison2019.csv, madison2020.csv,..., madison2024.csv.
